@@ -102,8 +102,6 @@ fn say_hello_with_string(name: String)
 */
 /*
 CHAPTER 15
-*/
-
 
 //Struct
 struct User {
@@ -120,7 +118,7 @@ struct Point(i32, i32, i32);
 impl User {
     fn get_age(&self) -> u32
     {
-        self.age;
+        self.age
     }
 }
 
@@ -154,4 +152,13 @@ fn print_user(user: &User)
 {
     println!("User {}, age {}, email {}", user.name, user.age, user.email);
     println!("Age {}", user.get_age());
+*/
+
+/*
+CHAPTER 16
+ */
+
+ fn main()
+{
+    
 }
