@@ -65,9 +65,93 @@ fn main()
 */
 /*
 CHAPTER 14
- */
+
+fn print_number(nb:i32){
+    println!("Number {}", nb);
+}
+
+fn print_number_by_reference(nb:&i32){
+    println!("Number {}", *nb);
+}
+
+fn expresion() -> i32
+{
+    8
+}
+
 fn main()
 {
+    let nb = expresion();
+    print_number(nb);
+    print_number_by_reference(&nb);
+    print_number_by_reference(&16);
+    say_hello_with_string("TT".to_string());
+    say_hello("TT2");
+}
+
+fn say_hello(name: &str)
+{
+    println!("Hello {}", name);
+
+}
+
+fn say_hello_with_string(name: String)
+{
+    println!("Hola {}", name);
+}
+*/
+/*
+CHAPTER 15
+*/
 
 
+//Struct
+struct User {
+    name: String,
+    email: String,
+    age: u32,
+    active: bool
+}
+
+//tupple structs
+struct Point(i32, i32, i32);
+
+//Add methods to the struct
+impl User {
+    fn get_age(&self) -> u32
+    {
+        self.age;
+    }
+}
+
+
+fn main()
+{
+    let mut user = User { name: "TT".to_string(), email: String::from("vabarca@kk.com"), age: 45, active: true};
+    print_user(&user);
+    user.active = false;
+
+    let user2 = create_user(String::from("Marco Aurelio"), 45);
+    print_user(&user2);
+
+    let user3 = User{
+        name: String::from("Quetzalcoatl"),
+        ..user // the rest of the parameters are equal to user parameter values
+    };
+
+    print_user(&user3);
+
+    let point_a = Point(0,2,3);
+    println!("X:{}, Y:{}, Z{}", point_a.0, point_a.1, point_a.2);
+}
+
+fn create_user(name:String, age:u32) -> User{
+
+    return User { name, email: "tbd".to_string(), age, active: true };
+}
+
+fn print_user(user: &User)
+{
+    println!("User {}, age {}, email {}", user.name, user.age, user.email);
+    println!("Age {}", user.get_age());
 }
