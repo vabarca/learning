@@ -156,9 +156,109 @@ fn print_user(user: &User)
 
 /*
 CHAPTER 16
- */
+ 
 
- fn main()
+enum UserRole{
+    BASIC,
+    ADMIN
+}
+
+enum WebSite{
+    URL(String),
+    INSTAGRAM(String),
+    LINKEDIN(String),
+    FACEBOOK(String),
+}
+
+fn main()
 {
-    
+    let role = UserRole::BASIC;
+    let website = WebSite::INSTAGRAM(String::from("@mariano"));
+}
+
+fn hasAccess(user_role: UserRole) -> bool{
+    match user_role{
+        UserRole::ADMIN => true,
+        UserRole::BASIC => false,
+    }
+}
+
+fn goToWebsite(website: WebSite) -> None {
+    match website{
+        WebSite::URL => ,
+        WebSite::INSTAGRAM => ,
+        WebSite::FACEBOOK => ,
+        WebSite::LINKEDIN => ,
+    }
+}
+*/
+
+/*
+CHAPTER 17
+ 
+
+fn main()
+{
+    let nombre: Option<String> = Some("Julio".to_string());
+
+    match nombre {
+        None => println!("Nombre no indicado"),
+        Some(nombre) => println!("{}", nombre),
+    }
+}
+
+*/
+
+struct User {
+    city: String,
+    name: String,
+    age: Option<i32>,
+    id: Option<i32>,
+    id2: Option<i32>,
+}
+
+impl User{
+    fn get_age(&self)-> Option<i32> {
+        self.age
+    }
+}
+
+impl User{
+    fn get_id(&self)-> i32 {
+        self.id.unwrap_or_default()
+    }
+}
+
+impl User{
+    fn get_id2(&self)-> i32 {
+        if self.id2.is_none(){
+            0
+        }
+        else{
+            self.id2.unwrap()
+        }
+    }
+}
+
+
+fn main()
+{
+ let nuevo = User{
+    city: "Valencia".to_string(),
+    name: "julio".to_string(),
+    age: Some(12),
+    id: Some(1),
+    id2: Some(2),
+ };
+
+ let age: Option<i32> = nuevo.get_age();
+ let id:i32 = nuevo.get_id();
+ let id2:i32 = nuevo.get_id2();
+
+
+ match age {
+    Some(age) => println!("{} {} {} {} {}", nuevo.city, nuevo.name, age, id, id2),
+    _ => (),
+ };
+
 }
