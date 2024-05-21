@@ -207,7 +207,7 @@ fn main()
     }
 }
 
-*/
+
 
 struct User {
     city: String,
@@ -261,4 +261,93 @@ fn main()
     _ => (),
  };
 
+}
+
+*/
+/*
+CHAPTER 17
+
+struct Point<T, V>{
+    x:T,
+    y:T,
+    z:i32,
+    data:V,
+}
+
+fn main(){
+
+    let point_a:Point<i32, String> = Point{
+        x:5,
+        y:6,
+        z:0,
+        data:"12".to_string(),
+    };
+
+    let point_b:Point<f64, i32> = Point{
+        x:5.0,
+        y:6.0,
+        z:0,
+        data:1,
+    };
+
+    let point_c:Point<i32, String> = Point{
+        x:5,
+        y:6,
+        z:0,
+        data:"12".to_string(),
+    };
+
+
+    calcular_cosas(point_a, point_c)
+}
+
+fn calcular_cosas<C>(p1: Point<T, V>, p2: Point<T, V>){
+    let a: T = p1.x;
+    let b: T = p2.y;
+
+    return 15.0;
+
+}
+
+*/
+
+/*
+CHAPTER 19
+
+
+fn main(){
+
+
+    let edad: Option<i32> = Some(16);
+
+    if edad.es_mayor_de_edad(){
+        println!("True");
+    }else {
+        println!("False");
+    }
+
+}
+
+trait LicenciaConducir {
+    fn es_mayor_de_edad(&self)-> bool;
+}
+
+impl LicenciaConducir for Option<i32> {
+    fn es_mayor_de_edad(&self)-> bool {
+        match self {
+            Some(edad) => edad > &18,
+            None => false,
+        }
+    }
+}
+
+*/
+
+
+/*
+CHAPTER 20
+*/
+
+fn main(){
+    
 }
