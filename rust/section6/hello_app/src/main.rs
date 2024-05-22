@@ -346,8 +346,146 @@ impl LicenciaConducir for Option<i32> {
 
 /*
 CHAPTER 20
+
+
+
+struct User{
+    nombre: String,
+    edad: i32,
+}
+
+impl std::fmt::Debug for User{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "usu {} tiene {} años", self.nombre, self.edad)
+    }
+}
+
+fn main(){
+    let usuario = User{
+        nombre: "vicente".to_string(),
+        edad:  45,
+    };
+
+    println!("hola {:?}", usuario);
+}
+
+// Trait debug
+#[derive(Debug)]
+struct User{
+    nombre: String,
+    edad: i32,
+}
+
+fn main(){
+    let usuario = User{
+        nombre: "vicente".to_string(),
+        edad:  45,
+    };
+
+    println!("hola {:?}", usuario);
+}
+
+*/
+
+/*
+CHAPTER 21
+
+//Trait display
+
+use std::fmt;
+#[derive(Debug)]
+struct User{
+    nombre: String,
+    edad: i32,
+}
+
+impl fmt::Display for User{
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(f, "{} ({})", self.nombre, self.edad)
+    }
+}
+
+fn main(){
+    let usuario = User{
+        nombre: "vicente".to_string(),
+        edad:  45,
+    };
+
+    println!("hola {}", usuario);
+    println!("hola {:?}", usuario);
+}
+
+*/
+
+/*
+CHAPTER 22
+
+Trait derive default
+
+use std::fmt;
+
+#[derive(Default, Debug)]
+enum UserRole{
+    #[default]
+    BASIC,
+    ADMIN
+}
+
+#[derive(Default, Debug)]
+enum WebSite{
+    #[default]
+    None,
+    URL(String),
+    INSTAGRAM(String),
+    LINKEDIN(String),
+    FACEBOOK(String),
+}
+
+
+#[derive(Default, Debug)]
+struct User{
+    nombre: String,
+    edad: i32,
+    email:String,
+    activo: bool,
+    user_role: UserRole,
+    website: WebSite,
+}
+
+impl fmt::Display for User{
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        writeln!(f, "{} ({})", self.nombre, self.edad)
+    }
+}
+
+fn main(){
+    let usuario = User{
+        nombre: "vicente".to_string(),
+        edad:  45,
+        email: "mio@".to_string(),
+        activo: true,
+        user_role: UserRole::BASIC,
+        website: WebSite::FACEBOOK(String::from("@mariano")),
+    };
+
+    let user2 = User::default();
+
+    println!("hola {}", usuario);
+    println!("hola {:?}", user2);
+}
+
+*/
+
+/*
+CHAPTER 22
 */
 
 fn main(){
-    
+    let s=[1,2,3];
+    for x in s.iter(){
+        println!("{}", x);
+    }
+
+    let vector = Vec::new();
+    vector.iter();
 }
