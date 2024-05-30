@@ -477,15 +477,82 @@ fn main(){
 */
 
 /*
-CHAPTER 22
-*/
+CHAPTER 23
+
 
 fn main(){
-    let s=[1,2,3];
-    for x in s.iter(){
-        println!("{}", x);
-    }
+    // let s=[1,2,3];
+    // for x in s.iter(){
+    //     println!("{}", x);
+    // }
 
-    let vector = Vec::new();
-    vector.iter();
+    let mut k  = Counter::new();
+    k.next();
+    k.next();
+    k.next();
+    k.next();
+    k.next();
+    k.next();
+    k.next();
+    let i = k.next();
+    
+    match i {
+        Some(count) => println!("{}", count),
+        None => println!("llego vacio",),
+    }
+    
+}
+
+struct Counter{
+    count:i32,
+}
+
+impl Counter{
+    fn new()->Counter{
+        Counter { count: 0 }
+    }
+}
+
+//Trait = rasgos
+impl Iterator for Counter{
+    type Item = i32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.count() < 5 {
+            self.count += 1;
+            Some(self.count)
+        }else {
+            None
+        }
+    }
+}
+*/
+
+/*
+CHAPTER 24
+
+
+fn main(){
+    //Closures o lambdas: funcion definido en linea
+    let hola = |nro1, nro2| -> i32 {
+        nro1 + nro2
+    };
+
+
+    let sum = sumar_uno;
+    println!("{} {}", hola(4, 4), sum(5));
+
+}
+
+fn sumar_uno(nro:i32)->i32{
+    nro +1
+}
+
+*/
+
+/*
+CHAPTER 24
+
+*/
+fn main(){
 }
