@@ -530,7 +530,7 @@ impl Iterator for Counter{
 
 /*
 CHAPTER 24
-
+*/
 
 fn main(){
     //Closures o lambdas: funcion definido en linea
@@ -541,18 +541,10 @@ fn main(){
 
     let sum = sumar_uno;
     println!("{} {}", hola(4, 4), sum(5));
-
+    sum +=1;
 }
 
 fn sumar_uno(nro:i32)->i32{
     nro +1
 }
 
-*/
-
-/*
-CHAPTER 24
-
-*/
-fn main(){
-}
