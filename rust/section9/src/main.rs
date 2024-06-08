@@ -14,7 +14,7 @@ fn main() {
 */
 
 /*
-CHAPTER 3
+CHAPTER 35
 Lifetimes = timepo de vida de las referenicas a memoria
 Lifetimes son una forma de asegurar que un pedazo de memeoria es aún valida para un referencia
 borrowing = pedir prestado
@@ -31,3 +31,4 @@ fn hace_algo<'a, 'b>(param: &'a i32, param_b: &'b str) -> &'a i32{
 fn hace_algo_igual(param: &i32, param_b: &str) -> i32{
     32
 }
+
