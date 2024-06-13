@@ -2,17 +2,17 @@ extern crate argparse;
 
 use argparse::{ArgumentParser, Store};
 use std::fs;
+use std::env;
+use minigrep::Config;
 
 fn main() {
-    let config: Config;
 
-
-    let mut file: String = "".to_string();
+    let mut filename: String = "".to_string();
     let mut query: String = "".to_string();
     {  // this block limits scope of borrows by ap.refer() method
         let mut ap: ArgumentParser = ArgumentParser::new();
         ap.set_description("Minigrep app emulates a grep command but in a more simple way");
-        ap.refer(&mut file)
+        ap.refer(&mut filename)
             .add_argument("file", Store,
             "File to open").required();
         ap.refer(&mut query)
@@ -21,15 +21,31 @@ fn main() {
         ap.parse_args_or_exit();
     }
 
-    println!("File: {}", file);
-    println!("Query: {}", query);
+    let cfg: Config = Config {filename, query};
 
-    let content = fs::read_to_string(file).expect("Error reading the file");
+    println!("File: {}", cfg.filename);
+    println!("Query: {}", cfg.query);
 
-    println!("{}", &content[..30]);
+    match env::current_exe() {
+        Ok(exe_path) => println!("Path of this executable is: {}",
+                                exe_path.display()),
+        Err(e) => println!("failed to get current exe path: {e}"),
+    };
+
+    let content: String = fs::read_to_string(&cfg.filename).expect(&format!("Error reading the file {}", cfg.filename)[..]);
+
+    let mut result: Vec<&str> = Vec::new();
+    for line in content.lines()
+    {
+        if line.contains(&cfg.query){
+            result.push(line)
+        }
+    }
+
+
+    for line in result{
+        println!("{}", line);
+    }
+   
 }
 
-struct Config{
-    filename: String,
-    query: String,
-}
